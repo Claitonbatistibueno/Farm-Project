@@ -1,5 +1,5 @@
 {
-    "updated": "2026-02-12 12:25",
+    "updated": "2026-02-16 16:00",
     "animals": [
         {
             "tag": "IE 2111204",
@@ -92,17 +92,7 @@
             "msg": "High profitability."
         }
     ],
-    "alerts": [
-        {
-            "tag": "IE 20114",
-            "breed": "Hereford",
-            "weight": 165.0,
-            "profit": -20.5,
-            "status": "Critical Loss",
-            "css": "danger",
-            "msg": "Costs exceed value."
-        }
-    ],
+    "alerts": [],
     "breeds": [
         {
             "name": "Charolais",
@@ -122,7 +112,7 @@
         },
         {
             "name": "Hereford",
-            "avg_profit": 825.54
+            "avg_profit": 849.22
         }
     ]
 }

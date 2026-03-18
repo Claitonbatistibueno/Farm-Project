@@ -48,7 +48,7 @@ SELECT * FROM (
     SELECT 
         sale_date as trans_date, 
         'Income' as type, 
-        'Venda de Gado' as category, 
+        'Livestock Sales' as category, 
         CONCAT('Animal Tag: ', (SELECT tag_number FROM animal WHERE animal_id = s.animal_id)) as description,
         total_value as amount
     FROM sales s

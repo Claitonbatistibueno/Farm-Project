@@ -518,7 +518,7 @@ if ($selected_company > 0) {
     };
 
     // --- CORREÇÃO 3: Cores para o gráfico de raças (Color Cycle) ---
-    // Paleta de cores para não ficar tudo verde
+
     const breedPalette = [
         '#4ade80', // Green
         '#60a5fa', // Blue
