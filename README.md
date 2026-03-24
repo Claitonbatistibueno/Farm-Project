@@ -12,7 +12,7 @@
 
 <br>
 
-Welcome to **Farm-Project**! This is a complete agricultural management system focused on animal tracking, health monitoring, feeding control, financial management, comprehensive reporting, and Artificial Intelligence integration for predictions and visual analysis.
+Welcome to **Farm-Project**,this is my project submission for the Immersive Software Engineering course at the University of Limerick.
 
 ## 🌟 Main Features
 
