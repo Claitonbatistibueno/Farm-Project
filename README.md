@@ -12,7 +12,7 @@
 
 <br>
 
-Welcome to **Farm-Project**,this is my project submission for the Immersive Software Engineering course at the University of Limerick.
+Welcome to **Farm-Project**, this is my project submission for the Immersive Software Engineering course at the University of Limerick.
 
 ## 🌟 Main Features
 
