@@ -1,5 +1,5 @@
 <?php
-// API simples para retornar histórico médico em JSON
+// API Historic helth JSON
 require_once 'config.php';
 
 if(isset($_GET['animal_id'])) {

@@ -7,7 +7,7 @@
 
 session_start();
 
-// 1. CONFIGURAÇÃO E CONEXÃO
+// 1. Conection and Security
 $host = '127.0.0.1';
 $db   = 'farmproject';
 $user = 'root';
@@ -24,7 +24,7 @@ try {
     die("Erro de Conexão: " . $e->getMessage());
 }
 
-// 2. PROCESSAMENTO DE FILTROS (DATA RANGE)
+// 2. DATA RANGE
 // Padrão: Do dia 01 deste mês até hoje
 $defaultStart = date('Y-m-01');
 $defaultEnd   = date('Y-m-t');

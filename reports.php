@@ -1,8 +1,6 @@
 <?php 
 /* =========================================================
    reports.php — Reports Hub
-   Style: Dark Matte Glass (Integrated)
-   Features: Glassmorphism Cards, User Detection & Full Navigation
    ========================================================= */
 require_once 'reports_init.php'; 
 

@@ -1,8 +1,6 @@
 <?php
 /* =========================================================
    financial_dashboard.php — Financial Command Center
-   Style: Premium Glass (Unified with Dashboard)
-   Features: Multi-Company, Real-time KPIs, AJAX Forms
    ========================================================= */
 
 session_start();
@@ -87,7 +85,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $stmt = $pdo->prepare("INSERT INTO sales (company_id, animal_id, client_id, sale_date, final_weight, price_per_unit, total_value) VALUES (?, ?, ?, ?, ?, ?, ?)");
             $stmt->execute([$actCompanyId, $_POST['animal_id'], $_POST['client_id'], $_POST['sale_date'], $_POST['final_weight'], $_POST['price_per_unit'], $totalValue]);
 
-            // Atualiza status do animal
+            // Update status animal
             $pdo->prepare("UPDATE animal SET status = 'Sold' WHERE animal_id = ?")->execute([$_POST['animal_id']]);
             $pdo->commit();
             $msg = '<div class="glass-alert success"><i class="fa-solid fa-check"></i> Sale registered & Animal archived!</div>';
@@ -107,7 +105,7 @@ try {
     $categories = $pdo->query("SELECT category_id, name FROM financial_categories ORDER BY name")->fetchAll(); 
 } catch (Exception $e) { $categories = []; }
 
-// Lista de Animais da Empresa Ativa
+// Animal
 $activeAnimals = $pdo->prepare("
     SELECT a.animal_id, a.tag_number 
     FROM animal a 
@@ -119,7 +117,7 @@ $activeAnimals = $pdo->prepare("
 $activeAnimals->execute([$actCompanyId]);
 $animalsList = $activeAnimals->fetchAll();
 
-// KPIs (Mês Atual)
+// KPIs
 $sqlRev = "SELECT COALESCE(SUM(total_value), 0) FROM sales WHERE company_id = ? AND MONTH(sale_date) = MONTH(CURRENT_DATE()) AND YEAR(sale_date) = YEAR(CURRENT_DATE())";
 $stmt = $pdo->prepare($sqlRev); $stmt->execute([$actCompanyId]);
 $kpiSales = $stmt->fetchColumn();
@@ -135,7 +133,7 @@ $kpiExpenses = $exp1 + $exp2;
 
 $kpiProfit = $kpiSales - $kpiExpenses;
 
-// Ledger (Extrato Recente)
+// Ledger 
 $sqlLedger = "
     SELECT * FROM (
         SELECT 'expense' as type, description as 'desc', amount, due_date as t_date 

@@ -67,7 +67,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     }
 
     // 4. PROPORTIONAL BATCH (Example: Split 50kg bag among all animals in Lot A)
-    // ** NEW FEATURE REQUESTED **
+   
     if ($_POST['action'] == 'save_batch_proportional') {
         $lot_id    = $_POST['lot_id'];
         $date      = $_POST['date'];

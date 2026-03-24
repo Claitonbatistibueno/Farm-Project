@@ -15,7 +15,7 @@ if (!isset($_SESSION['user_id'])) { header("Location: login.php"); exit; }
 $msg = "";
 $msg_type = "";
 
-// --- 1. DELETAR RAÇA ---
+// ---1---
 if (isset($_GET['delete'])) {
     $id = intval($_GET['delete']);
     // Verifica se a raça está em uso antes de deletar
@@ -36,7 +36,7 @@ if (isset($_GET['delete'])) {
     }
 }
 
-// --- 2. SALVAR/ATUALIZAR RAÇA ---
+// --- 2---
 if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['action']) && $_POST['action'] == 'save_breed') {
     $type_id = $_POST['type_id'];
     $species = $_POST['species'];

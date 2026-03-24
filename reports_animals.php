@@ -2,19 +2,18 @@
 /* =========================================================
    reports_animals.php — Advanced Livestock Analytics
    Style: Matched to Dashboard (Premium Glass)
-   Features: PDF/Excel, Filters, Financial ROI, Charts
    UPDATES: Fixed Lot Filtering, Dynamic Chart Colors
    ========================================================= */
 
 session_start();
 require_once 'config.php';
 
-// 1. SEGURANÇA & SETUP
+// 1. Security & SETUP
 if (!isset($conn)) { die("Erro crítico: Conexão DB ausente."); }
 if (!isset($_SESSION['user_id'])) { header("Location: login.php"); exit; }
 
-// 2. DADOS DO CABEÇALHO (Para o PDF)
-$current_user = "Usuário";
+// 2. Heater (Para o PDF)
+$current_user = "User";
 $stmt_u = $conn->prepare("SELECT username FROM users WHERE id = ?");
 if ($stmt_u) {
     $stmt_u->bind_param("i", $_SESSION['user_id']);
@@ -29,7 +28,7 @@ $params = [];
 $types = "";
 $filter_desc = "Geral";
 
-// Captura o ID da empresa para filtrar o dropdown de lotes
+//  ID company o dropdown de lotes
 $selected_company = !empty($_GET['company_id']) ? (int)$_GET['company_id'] : 0;
 
 if (!empty($_GET['company_id'])) {
@@ -54,7 +53,7 @@ if (!empty($_GET['date_range'])) {
 
 $sql_where = implode(" AND ", $where);
 
-// 4. QUERY PRINCIPAL
+// 4. MAIN QUERY 
 $sql = "SELECT 
             a.*, 
             t.breed, 
@@ -76,7 +75,7 @@ if (!empty($params)) { $stmt->bind_param($types, ...$params); }
 $stmt->execute();
 $result = $stmt->get_result();
 
-// 5. PROCESSAMENTO E CALCULOS
+// 5. MATHS
 $animals = [];
 $stats = ['count' => 0, 'active' => 0, 'total_weight' => 0, 'total_cost' => 0, 'est_revenue' => 0];
 $charts = ['status' => [], 'breed' => []];

@@ -1,21 +1,19 @@
 <?php
 /* =========================================================
    medical_catalog.php — Veterinary & Services Catalog
-   Style: Premium Glass
-   Features: Cost Tracking, Inventory, Supplier Link
    ========================================================= */
 
 session_start();
 require_once 'config.php';
 
-// Segurança
+// Security
 if (!isset($conn)) { die("Database connection error."); }
 if (!isset($_SESSION['user_id'])) { header("Location: login.php"); exit; }
 
 $msg = "";
 $msg_type = "";
 
-// --- 1. DELETAR ITEM ---
+// --- 1. DELETAR ---
 if (isset($_GET['delete'])) {
     $id = intval($_GET['delete']);
     
@@ -37,7 +35,7 @@ if (isset($_GET['delete'])) {
     }
 }
 
-// --- 2. SALVAR/ATUALIZAR ITEM ---
+// --- 2. SAVE / UPDATE ---
 if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['action']) && $_POST['action'] == 'save_item') {
     $item_id = $_POST['item_id'];
     
@@ -50,7 +48,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['action']) && $_POST['a
     $cost     = floatval($_POST['cost_price']); // obrigatórios
     $desc     = trim($_POST['description']);
 
-    // VALIDAÇÃO: Nome, Tipo e Custo são obrigatórios
+    // Validation: Name, type and price
     if (empty($name) || empty($type) || $cost <= 0) {
         $msg = "Error: Item Name, Type and a valid Cost Price are required.";
         $msg_type = "danger";
@@ -75,8 +73,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['action']) && $_POST['a
     }
 }
 
-// --- BUSCAR DADOS ---
-// Lista de Fornecedores para o Select
+// --- LOOK ---
+// Select Suppliers
 $suppliers = $conn->query("SELECT supplier_id, name FROM suppliers WHERE status='active' ORDER BY name");
 
 // Lista de Itens (JOIN com Fornecedores)
